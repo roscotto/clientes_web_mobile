@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Ejemplo de chat - Firestore</title>
+   
+</head>
+
+<body>
+    <h1>Intro a Firestore</h1>
+    <p>Leyendo los mensajes del chat</p>
+    <div id="contenedor">
+        <div id="caja-chat">
+            <div id="chat"></div>
+        </div>
+        <!-- <form method="POST" action="index.php">
+            <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+            <textarea name="mensaje" placeholder="Ingresa tu mensaje"></textarea>
+            <input type="submit" name="enviar" value="Enviar">
+        </form> -->
+
+    </div>
+    <div id="salida"></div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js"
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0gxCvDjSluyWrNM-A8sv9NwmOhaEDOg4",
+            authDomain: "clientes-web-2023-davinci.firebaseapp.com",
+            projectId: "clientes-web-2023-davinci",
+            storageBucket: "clientes-web-2023-davinci.appspot.com",
+            messagingSenderId: "384231176118",
+            appId: "1:384231176118:web:ab1d64647a3e8e70a1b317"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        //Obtener la instancia de Firestore (referencia a la base de datos)
+        const db = getFirestore(app);
+
+        //Leyendo datos de Firestore
+
+        //Obtener la referencia de la colección. La funcion collection() recibe dos parametros: la instancia de Firestore y el nombre de la colección (path)
+        const refChat = collection(db, 'chats');
+
+        const salida = document.getElementById('salida');
+
+        // Probamos con el forEach.
+                // salida.innerHTML = "";
+                // snapshot.forEach(doc => {
+                //     // console.log("Documento: ", doc);
+                //     // Para pedir los datos de un documento, usamos .data(), y para su id, usamos .id
+                //     // console.log("El documento ", doc.id, " tiene los datos ", doc.data());
+                //     salida.innerHTML += `<div>
+                //         <div><b>Usuario: </b> ${doc.data().user}</div>
+                //         <div><b>Dijo: </b> ${doc.data().message}</div>
+                //     </div>`;
+                // });
+
+
+
+        // Versión usando docs.
+            // Leer los documentos de la colección con la función getDocs(). Recibe como argumento la referencia de la colección o una query y devuelve una promesa que se resuelve con un objeto QuerySnapshot de todos los documentos que cumplen con la query.
+            getDocs(refChat)
+                .then(snapshot => {
+                    salida.innerHTML = snapshot.docs.map(doc => 
+                        `<div>
+                            <div><b>Usuario: </b> ${doc.data().user}</div>
+                            <div><b>Mensaje: </b> ${doc.data().message}</div>
+                        </div>`).join('');
+                });
+                
+
+                //La propiedad docs del objeto QuerySnapshot contiene un array de objetos QueryDocumentSnapshot que representan los documentos de la colección.
+                
+             
+        
+    </script>
+</body>
+
+</html>
