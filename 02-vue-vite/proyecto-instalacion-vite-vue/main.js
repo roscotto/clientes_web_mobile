@@ -42,7 +42,7 @@
 
 
 // Creamos una aplicacion de Vue
-
+import './src/main.css'; // Importamos el css
 import { createApp } from 'vue';
 import App from './src/App.vue';
 
