@@ -38,29 +38,32 @@ export default {
 </script>
 
 <template>
-  <h1>Intro a Firestore</h1>
-  <p>Leyendo los mensajes del chat, en tiempo real</p>
-  <div id="contenedor">
-    <div id="caja-chat">
-      <div id="chat"></div>
-    </div>
-    <form method="POST" action="#" id="form-chat" @submit.prevent="sendMessage">
-      <div>
-        <label for="user">Usuario:</label>
-        <input id="user" type="text" name="user" v-model="newMessage.user" />
+  <h1 class="mb-4 text-3xl font-bold">Intro a Firestore</h1>
+  <p class="mb-3">Leyendo los mensajes del chat, en tiempo real</p>
+  
+  <div class="flex gap-4 justify-between">
+    <div>
+      <div class="mb-2" v-for="message in messages">
+        <div><b>Usuario:</b> {{ message.user }}</div>
+        <div><b>Mensaje:</b> {{ message.message }}</div>
       </div>
-      <div>
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" v-model="newMessage.message"></textarea>
-      </div>
-      <input type="submit" name="enviar" value="Enviar" />
-    </form>
-  </div>
-  <div>
-    <div v-for="message in messages">
-      <div><b>Usuario:</b> {{ message.user }}</div>
-      <div><b>Mensaje:</b> {{ message.message }}</div>
     </div>
 
+    <div id="contenedor">
+      <div id="caja-chat">
+        <div id="chat"></div>
+      </div>
+      <form method="POST" action="#" id="form-chat" @submit.prevent="sendMessage">
+        <div class="mb-2">
+          <label class="block font-bold mb-1" for="user">Usuario:</label>
+          <input  class="border border-gray-500 rounded p-2 w-full" id="user" type="text" name="user" v-model="newMessage.user" />
+        </div>
+        <div class="mb-2">
+          <label class="block font-bold mb-1" for="message">Mensaje:</label>
+          <textarea class="border border-gray-500 rounded p-2 w-full"  id="message" name="message" v-model="newMessage.message"></textarea>
+        </div>
+        <input class="bg-blue-700 text-white p-1.5 rounded-xl w-full" type="submit" name="enviar" value="Enviar" />
+      </form>
+    </div>
   </div>
 </template>

@@ -14,5 +14,7 @@ export default {
     Acá va a venir el renderizado de las rutas cuando agreguemos Vue Router.
     Mientras tanto vamos a renderizar la "vista" del chat
     -->
-  <Chat />
+  <div class="container m-auto p-4">
+    <Chat />
+  </div>
 </template>
