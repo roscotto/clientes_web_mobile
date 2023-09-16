@@ -25,6 +25,12 @@ export default {
         <li>
           <router-link to="/chat">Chat</router-link>
         </li>
+        <li>
+          <router-link to="/registro">Registro</router-link>
+        </li>
+        <li>
+          <router-link to="/iniciar-sesion">Iniciar Sesión</router-link>
+        </li>
       </ul>
     </nav>
   </header>

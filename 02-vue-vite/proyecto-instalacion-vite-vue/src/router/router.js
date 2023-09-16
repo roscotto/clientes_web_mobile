@@ -5,6 +5,8 @@
 import Home from '../pages/Home.vue';
 import About from '../pages/About.vue';
 import Chat from '../pages/Chat.vue';
+import Register from '../pages/Register.vue';
+import Login from '../pages/Login.vue';
 import { createRouter, createWebHashHistory } from 'vue-router'; // Importamos el router de Vue
 
 
@@ -14,6 +16,8 @@ const routes = [
     {path: '/',                      component: Home},
     {path: '/quienes-somos',         component: About},
     {path: '/chat',                  component: Chat},
+    {path: '/iniciar-sesion',        component: Login},
+    {path: '/registro',              component: Register},
 ];
 
 
