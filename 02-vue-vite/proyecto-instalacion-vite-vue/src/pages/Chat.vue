@@ -1,5 +1,6 @@
 <script>
 import { chatSubscribeToMessages, chatSaveMessage } from "../services/chat";
+import { dateToString } from "../helpers/date.js";
 
 export default {
   name: "Chat",
@@ -14,6 +15,7 @@ export default {
   },
   // métodos del componente
   methods: {
+    // enviar mensaje
     sendMessage() {
       chatSaveMessage({
         user: this.newMessage.user,
@@ -23,6 +25,11 @@ export default {
       .then(() => {
         this.newMessage.message = ""; // limpiamos el campo de mensaje
       });
+    },
+
+    // formatear la fecha
+    formatDate(date) { 
+      return dateToString(date);
     }
 
   },
@@ -46,7 +53,7 @@ export default {
       <div class="mb-2" v-for="message in messages">
         <div><b>Usuario:</b> {{ message.user }}</div>
         <div><b>Mensaje:</b> {{ message.message }}</div>
-        <div class="text-right"> {{ message.created_at }}</div>
+        <div class="text-right"> {{ formatDate(message.created_at) }}</div>
       </div>
     </div>
 
