@@ -10,11 +10,30 @@ export default {
 </script>
 
 <template>
-  <!--
-    Acá va a venir el renderizado de las rutas cuando agreguemos Vue Router.
-    Mientras tanto vamos a renderizar la "vista" del chat
-    -->
+  <header class="flex gap-8 items-center p-4 bg-slate-200">
+    <div>
+      <p class="text-2xl">DV Chat</p>
+    </div>
+    <nav>
+      <ul class="flex gap-4">
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/quienes-somos">Quiénes somos</router-link>
+        </li>
+        <li>
+          <router-link to="/chat">Chat</router-link>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
   <div class="container m-auto p-4">
-    <Chat />
+    <router-view></router-view>
   </div>
+
+  <footer>
+    <p class="flex justify-center items-center h-[100px] p-4 bg-slate-800 text-white">Scotto Rocío &copy 2023</p>
+  </footer>
 </template>

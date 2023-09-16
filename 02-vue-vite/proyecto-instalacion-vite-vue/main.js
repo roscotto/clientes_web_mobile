@@ -45,8 +45,12 @@
 import './src/main.css'; // Importamos el css
 import { createApp } from 'vue';
 import App from './src/App.vue';
+import router from './src/router/router'; // Importamos el router de Vue
 
 const app = createApp(App);
+
+// Agregamos el router a la aplicación
+app.use(router);
 
 // Montamos la aplicacion en el elemento con id app
 
