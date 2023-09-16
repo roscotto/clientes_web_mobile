@@ -2,7 +2,7 @@
 
 import { addDoc, collection, onSnapshot, serverTimestamp, query, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
-
+import { dateToString } from "../helpers/date";
 
 //Leyendo datos de Firestore en tiempo real
 
@@ -33,7 +33,8 @@ export function chatSubscribeToMessages(callback) {
         const data = snapshot.docs.map(doc => {
             return {
                 user: doc.data().user,
-                message: doc.data().message
+                message: doc.data().message,
+                created_at: dateToString(doc.data().created_at.toDate()),
             };
         });
 

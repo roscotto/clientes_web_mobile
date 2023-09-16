@@ -46,6 +46,7 @@ export default {
       <div class="mb-2" v-for="message in messages">
         <div><b>Usuario:</b> {{ message.user }}</div>
         <div><b>Mensaje:</b> {{ message.message }}</div>
+        <div class="text-right"> {{ message.created_at }}</div>
       </div>
     </div>
 
