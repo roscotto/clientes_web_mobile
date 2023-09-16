@@ -29,7 +29,7 @@ export default {
     </nav>
   </header>
 
-  <div class="container m-auto p-4">
+  <div class="container h-full m-auto p-4">
     <router-view></router-view>
   </div>
 
