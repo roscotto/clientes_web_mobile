@@ -50,7 +50,11 @@ export default {
   
   <div class="flex gap-4 justify-between">
     <div>
-      <div class="mb-2" v-for="message in messages">
+      <div 
+        class="mb-2" 
+        v-for="message in messages"
+        :key="message.id"
+      >
         <div><b>Usuario:</b> {{ message.user }}</div>
         <div><b>Mensaje:</b> {{ message.message }}</div>
         <div class="text-right"> {{ formatDate(message.created_at) }}</div>

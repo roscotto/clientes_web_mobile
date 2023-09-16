@@ -32,6 +32,7 @@ export function chatSubscribeToMessages(callback) {
 
         const data = snapshot.docs.map(doc => {
             return {
+                id: doc.id,
                 user: doc.data().user,
                 message: doc.data().message,
                 created_at: doc.data().created_at.toDate(),
