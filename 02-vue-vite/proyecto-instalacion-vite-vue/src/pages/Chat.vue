@@ -1,45 +1,43 @@
 <script>
 import { chatSubscribeToMessages, chatSaveMessage } from "../services/chat";
 import { dateToString } from "../helpers/date.js";
+import BaseButton from "../components/BaseButton.vue";
 
 export default {
-  name: "Chat",
-  data() { // data es una función que retorna un objeto
-    return {
-      messages: [],
-      newMessage: {
-        user: "",
-        message: ""
-      }
-    }
-  },
-  // métodos del componente
-  methods: {
-    // enviar mensaje
-    sendMessage() {
-      chatSaveMessage({
-        user: this.newMessage.user,
-        message: this.newMessage.message
-        // tambien se puede escribir como: ...this.newMessage
-      })
-      .then(() => {
-        this.newMessage.message = ""; // limpiamos el campo de mensaje
-      });
+    name: "Chat",
+    data() {
+        return {
+            messages: [],
+            newMessage: {
+                user: "",
+                message: ""
+            }
+        };
     },
-
-    // formatear la fecha
-    formatDate(date) { 
-      return dateToString(date);
-    }
-
-  },
-
-  mounted() {  //funcion del ciclo de vida, se ejecuta cuando el componente se monta 
-    chatSubscribeToMessages(messages => {
-      this.messages = messages;
-    });
-
-  }
+    // métodos del componente
+    methods: {
+        // enviar mensaje
+        sendMessage() {
+            chatSaveMessage({
+                user: this.newMessage.user,
+                message: this.newMessage.message
+                // tambien se puede escribir como: ...this.newMessage
+            })
+                .then(() => {
+                this.newMessage.message = ""; // limpiamos el campo de mensaje
+            });
+        },
+        // formatear la fecha
+        formatDate(date) {
+            return dateToString(date);
+        }
+    },
+    mounted() {
+        chatSubscribeToMessages(messages => {
+            this.messages = messages;
+        });
+    },
+    components: { BaseButton }
 };
 
 </script>
@@ -74,7 +72,8 @@ export default {
           <label class="block font-bold mb-1" for="message">Mensaje:</label>
           <textarea class="border border-gray-500 rounded p-2 w-full"  id="message" name="message" v-model="newMessage.message"></textarea>
         </div>
-        <input class="bg-blue-700 text-white p-1.5 rounded-xl w-full" type="submit" name="enviar" value="Enviar" />
+       <BaseButton />
+
       </form>
     </div>
   </div>
