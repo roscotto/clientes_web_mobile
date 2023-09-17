@@ -5,12 +5,15 @@ import BaseButton from "../components/BaseButton.vue";
 import BaseLabel from "../components/BaseLabel.vue";
 import BaseInput from "../components/BaseInput.vue";
 import BaseTextArea from "../components/BaseTextArea.vue";
+import Loader from "../components/Loader.vue";
 
 export default {
   name: "Chat",
   data() {
     return {
+      messagesLoading: true,
       messages: [],
+      newMessageSaving: false,
       newMessage: {
         user: "",
         message: ""
@@ -21,6 +24,8 @@ export default {
   methods: {
     // enviar mensaje
     sendMessage() {
+      if(this.newMessageSaving) return; // si se está guardando, no hacer nada (para evitar que se envíe varias veces)
+      this.newMessageSaving = true;
       chatSaveMessage({
         user: this.newMessage.user,
         message: this.newMessage.message
@@ -28,19 +33,24 @@ export default {
       })
         .then(() => {
           this.newMessage.message = ""; // limpiamos el campo de mensaje
+          this.newMessageSaving = false;
         });
     },
+
     // formatear la fecha
     formatDate(date) {
       return dateToString(date);
     }
   },
+
   mounted() {
+    this.messagesLoading = true;
     chatSubscribeToMessages(messages => {
       this.messages = messages;
+      this.messagesLoading = false;
     });
   },
-  components: { BaseButton, BaseLabel, BaseInput, BaseTextArea }
+  components: { BaseButton, BaseLabel, BaseInput, BaseTextArea, Loader }
 };
 
 </script>
@@ -51,6 +61,12 @@ export default {
 
   <div class="flex gap-4 justify-between">
     <div>
+      <template v-if="messagesLoading">
+        <Loader />
+      </template>
+      <template v-else-if="messages.length === 0">
+        <p>No hay mensajes</p>
+      </template>
       <div class="mb-2" v-for="message in messages" :key="message.id">
         <div><b>Usuario:</b> {{ message.user }}</div>
         <div><b>Mensaje:</b> {{ message.message }}</div>
@@ -74,7 +90,9 @@ export default {
           </BaseTextArea>
         </div>
 
-        <BaseButton />
+        <BaseButton 
+          :loading="newMessageSaving"
+        />
 
       </form>
     </div>
