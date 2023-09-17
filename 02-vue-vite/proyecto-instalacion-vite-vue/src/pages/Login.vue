@@ -20,7 +20,6 @@ export default {
             <input type="password" name="password" id="password" class="border border-gray-500 rounded p-2 w-full">
         </div>
        
-        <BaseButton />
-
+        <BaseButton>Iniciar Sesión</BaseButton>
     </form>
 </template>

@@ -19,7 +19,7 @@ export default {
             <label for="password" class="block font-bold mb-1">Contraseña</label>
             <input type="password" name="password" id="password" class="border border-gray-500 rounded p-2 w-full">
         </div>
-        <!-- <button type="submit" class="bg-blue-700 text-white p-1.5 rounded-xl w-full">Crear Cuenta</button> -->
-        <BaseButton />
+        
+        <BaseButton>Crear Cuenta</BaseButton>
     </form>
 </template>
