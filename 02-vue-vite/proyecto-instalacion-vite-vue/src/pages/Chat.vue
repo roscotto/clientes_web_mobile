@@ -73,7 +73,7 @@ export default {
           <textarea class="border border-gray-500 rounded p-2 w-full"  id="message" name="message" v-model="newMessage.message"></textarea>
         </div>
         
-        <BaseButton>Enviar</BaseButton>
+        <BaseButton/>
 
       </form>
     </div>
