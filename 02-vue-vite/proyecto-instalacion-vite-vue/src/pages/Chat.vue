@@ -2,6 +2,7 @@
 import { chatSubscribeToMessages, chatSaveMessage } from "../services/chat";
 import { dateToString } from "../helpers/date.js";
 import BaseButton from "../components/BaseButton.vue";
+import BaseLabel from "../components/BaseLabel.vue";
 
 export default {
     name: "Chat",
@@ -37,7 +38,7 @@ export default {
             this.messages = messages;
         });
     },
-    components: { BaseButton }
+    components: { BaseButton, BaseLabel }
 };
 
 </script>
@@ -65,11 +66,11 @@ export default {
       </div>
       <form method="POST" action="#" id="form-chat" @submit.prevent="sendMessage">
         <div class="mb-2">
-          <label class="block font-bold mb-1" for="user">Usuario:</label>
+          <BaseLabel for="user">Usuario:</BaseLabel>
           <input  class="border border-gray-500 rounded p-2 w-full" id="user" type="text" name="user" v-model="newMessage.user" />
         </div>
         <div class="mb-2">
-          <label class="block font-bold mb-1" for="message">Mensaje:</label>
+          <BaseLabel for="message">Mensaje:</BaseLabel>
           <textarea class="border border-gray-500 rounded p-2 w-full"  id="message" name="message" v-model="newMessage.message"></textarea>
         </div>
         
