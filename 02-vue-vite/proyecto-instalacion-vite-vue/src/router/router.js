@@ -13,11 +13,11 @@ import { createRouter, createWebHashHistory } from 'vue-router'; // Importamos e
 // Primero definimos la lista de rutas
 
 const routes = [
-    {path: '/',                      component: Home},
-    {path: '/quienes-somos',         component: About},
-    {path: '/chat',                  component: Chat},
-    {path: '/iniciar-sesion',        component: Login},
-    {path: '/registro',              component: Register},
+    { path: '/',                   component: Home },
+    { path: '/quienes-somos',      component: About },
+    { path: '/chat',               component: Chat },
+    { path: '/iniciar-sesion',     component: Login },
+    { path: '/registro',           component: Register },
 ];
 
 

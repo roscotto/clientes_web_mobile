@@ -2,10 +2,9 @@
  * Transforma una fecha en formato Date a un string con el formato dd/mm/yyyy hh:mm:ss
  * @param {Date} date 
  */
-export function dateToString(date) 
-{
+export function dateToString(date) {
     // //FORMA 1: 
-   
+
     // //parseamos manualmente la fecha para que tenga el formato dd/mm/yyyy hh:mm:ss
     // const day = normalizeSegment(date.getDate()); // 1-31
     // const month = normalizeSegment(date.getMonth() + 1); // Enero es 0
@@ -31,7 +30,7 @@ export function dateToString(date)
     const dateFormatter = new Intl.DateTimeFormat('es-AR', {
         day: '2-digit', month: '2-digit', year: 'numeric',
         hour: '2-digit', minute: '2-digit', second: '2-digit'
-}).format(date);
+    }).format(date);
 
-return dateFormatter.replace(',', ' -');
+    return dateFormatter.replace(',', ' -');
 }

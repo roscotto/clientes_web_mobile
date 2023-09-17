@@ -1,10 +1,11 @@
 <script>
 import BaseButton from '../components/BaseButton.vue';
+import BaseInput from '../components/BaseInput.vue';
 import BaseLabel from '../components/BaseLabel.vue';
 
 export default {
     name: 'Login',
-    components: { BaseButton, BaseLabel }
+    components: { BaseButton, BaseLabel, BaseInput }
 }
 </script>
 
@@ -14,13 +15,13 @@ export default {
     <form action="#">
         <div class="mb-2">
             <BaseLabel for="email">Email</BaseLabel>
-            <input type="email" id="email" class="border border-gray-500 rounded p-2 w-full">
+            <BaseInput type="email" id="email" />
         </div>
         <div class="mb-2">
             <BaseLabel for="password">Contraseña</BaseLabel>
-            <input type="password" name="password" id="password" class="border border-gray-500 rounded p-2 w-full">
+            <BaseInput type="password" name="password" id="password" />
         </div>
-       
+
         <BaseButton>Iniciar Sesión</BaseButton>
     </form>
 </template>

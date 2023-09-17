@@ -5,5 +5,7 @@ export default {
 </script>
 
 <template>
-    <label class="block font-bold mb-1"><slot /></label>
+    <label class="block font-bold mb-1">
+        <slot />
+    </label>
 </template>

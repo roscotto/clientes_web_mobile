@@ -42,5 +42,6 @@ export function chatSubscribeToMessages(callback) {
         // Invocamos al callback y le pasamos el array de mensajes
 
         callback(data);
-    })};
+    })
+};
 
