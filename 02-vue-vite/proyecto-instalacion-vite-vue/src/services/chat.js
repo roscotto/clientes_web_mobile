@@ -31,6 +31,7 @@ export function chatSubscribeToMessages(callback) {
         //transformamos el snapshot en un array de objetos con los datos de cada documento
 
         const data = snapshot.docs.map(doc => {
+
             return {
                 id: doc.id,
                 user: doc.data().user,
